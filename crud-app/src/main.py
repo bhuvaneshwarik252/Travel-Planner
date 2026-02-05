@@ -6,7 +6,7 @@ from contextlib import asynccontextmanager
 from src import models
 from src.database import engine
 from src.database import engine
-from src.routers import users, travel
+from src.routers import users, travel, health, planner
 from config.settings import settings
 
 # Setup logging
@@ -30,6 +30,8 @@ app = FastAPI(
 
 app.include_router(users.router, prefix="/api", tags=["users"])
 app.include_router(travel.router, prefix="/api/travel", tags=["travel"])
+app.include_router(health.router)
+app.include_router(planner.router, prefix="/api", tags=["planner"])
 
 @app.get("/")
 def root():

@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List, Any, Dict
 
 # Shared properties
 class UserBase(BaseModel):
@@ -23,3 +23,43 @@ class UserResponse(UserBase):
     
     class Config:
         from_attributes = True
+
+# --- Travel Planner Schemas ---
+
+class Coordinates(BaseModel):
+    latitude: float
+    longitude: float
+
+class DestinationDetails(BaseModel):
+    name: str
+    country: str
+    region: Optional[str] = None
+    population: Optional[int] = None
+    timezone: Optional[str] = None
+    coordinates: Coordinates
+    # Additional info
+    wikiDataId: Optional[str] = None
+
+class Attraction(BaseModel):
+    name: str
+    kind: str
+    description: Optional[str] = None
+    image: Optional[str] = None
+    wikipedia_url: Optional[str] = None
+    coordinates: Optional[Coordinates] = None
+
+class FlightOffer(BaseModel):
+    price: str
+    currency: str
+    airline: str
+    departure: str
+    arrival: str
+    duration: Optional[str] = None
+
+class TravelPlanResponse(BaseModel):
+    destination: DestinationDetails
+    attractions: List[Attraction] = []
+    # Simplified flight info or airports
+    nearby_airports: List[Dict[str, Any]] = []
+    flights: List[FlightOffer] = [] 
+    recommendations: List[str] = []
