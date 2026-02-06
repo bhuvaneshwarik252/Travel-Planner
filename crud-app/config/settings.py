@@ -26,4 +26,10 @@ class Settings:
     GEODB_API_KEY: str = os.getenv("GEODB_API_KEY", "")
     GEODB_API_HOST: str = os.getenv("GEODB_API_HOST", "wft-geo-db.p.rapidapi.com")
 
+    # Geoapify Settings
+    GEOAPIFY_API_KEY: str = os.getenv("GEOAPIFY_API_KEY", "")
+
+    # Unsplash Settings
+    UNSPLASH_ACCESS_KEY: str = os.getenv("UNSPLASH_ACCESS_KEY", "")
+
 settings = Settings()

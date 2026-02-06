@@ -5,3 +5,4 @@ crud-app/venv/
 crud-app/__pycache__/
 *.pyc
 .ipynb_checkpoints/
+.log

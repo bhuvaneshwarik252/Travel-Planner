@@ -56,6 +56,32 @@ class FlightOffer(BaseModel):
     arrival: str
     duration: Optional[str] = None
 
+class Activity(BaseModel):
+    """Individual activity within a day's itinerary"""
+    time: str  # e.g., "09:00 AM"
+    attraction: Attraction
+    duration_hours: float
+    notes: Optional[str] = None
+
+class DayItinerary(BaseModel):
+    """Represents a single day's plan"""
+    day_number: int
+    date: Optional[str] = None
+    activities: List[Activity] = []
+    meals: Optional[List[str]] = None  # e.g., ["Lunch at 12:00 PM", "Dinner at 7:00 PM"]
+    accommodation: Optional[str] = None
+
+class Budget(BaseModel):
+    accommodation: float
+    food: float
+    activities: float
+    local_transport: float
+    flights: Optional[float] = None
+    train: Optional[float] = None
+    transport: Optional[float] = None
+    total: float
+    currency: str = "INR"
+
 class TravelPlanResponse(BaseModel):
     destination: DestinationDetails
     attractions: List[Attraction] = []
@@ -63,3 +89,9 @@ class TravelPlanResponse(BaseModel):
     nearby_airports: List[Dict[str, Any]] = []
     flights: List[FlightOffer] = [] 
     recommendations: List[str] = []
+    # New fields for automatic planning
+    itinerary: Optional[List[DayItinerary]] = None
+    travel_mode: Optional[str] = None
+    total_days: Optional[int] = None
+    estimated_budget: Optional[Budget] = None
+

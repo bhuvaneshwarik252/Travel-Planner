@@ -71,3 +71,39 @@ async def get_attractions(
         status_code = 404 if "not found" in result["error"].lower() else 400
         raise HTTPException(status_code=status_code, detail=result["error"])
     return result
+
+# ---------------------------------------------------------
+# Geoapify Endpoints (Alternative Service)
+# ---------------------------------------------------------
+
+@router.get("/geoapify/places")
+@router.get("/geoapify/places")
+async def get_geoapify_places(
+    lat: Optional[float] = Query(None, description="Latitude (Required if city is missing)"),
+    lon: Optional[float] = Query(None, description="Longitude (Required if city is missing)"),
+    city: Optional[str] = Query(None, description="City name (Used if lat/lon are missing)"),
+    categories: str = Query("tourism.sights", description="Comma-separated categories"),
+    radius: int = Query(5000, description="Search radius in meters"),
+    limit: int = 20
+):
+    """
+    Get tourist attractions using Geoapify.
+    Supports search by:
+    1. **Coordinates** (lat/lon): For 'Current Location' or Map Selection.
+    2. **City Name**: For text-based search (auto-geocodes).
+    """
+    from src.services.geoapify_service import geoapify_service
+
+    # 1. Use Coordinates if provided (Map/Current Location)
+    if lat is not None and lon is not None:
+        return await geoapify_service.get_places(lat, lon, categories, radius, limit)
+
+    # 2. Use City Name if provided
+    if city:
+        location = await geoapify_service.forward_geocoding(city)
+        if not location:
+            raise HTTPException(status_code=404, detail=f"City '{city}' not found.")
+        
+        return await geoapify_service.get_places(location["lat"], location["lon"], categories, radius, limit)
+
+    raise HTTPException(status_code=400, detail="Either 'lat'/'lon' OR 'city' must be provided.")
