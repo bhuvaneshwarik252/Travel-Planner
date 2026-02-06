@@ -64,26 +64,21 @@ class TravelService:
                 return {'iataCode': keyword, 'name': keyword}
 
         try:
-            # Search for the location as City
+            # Search for the location using ANY (City or Airport)
+            # This is broader and more likely to find matches for "bengalore" etc.
             response = self.client.reference_data.locations.get(
                 keyword=keyword,
-                subType=Location.CITY
+                subType=Location.ANY
             )
+            
             if response.data:
-                info = {'iataCode': response.data[0].get('iataCode'), 'name': response.data[0].get('name')}
+                # Prefer AIRPORT or CITY with high relevance
+                # But simply taking the first one is often good enough for Amadeus
+                best_match = response.data[0]
+                info = {'iataCode': best_match.get('iataCode'), 'name': best_match.get('name')}
                 self._location_cache[keyword] = info
                 return info
             
-            # Fallback to Airport
-            response = self.client.reference_data.locations.get(
-                keyword=keyword,
-                subType=Location.AIRPORT
-            )
-            if response.data:
-                info = {'iataCode': response.data[0].get('iataCode'), 'name': response.data[0].get('name')}
-                self._location_cache[keyword] = info
-                return info
-
         except ResponseError as error:
             logger.error(f"Error resolving location for '{keyword}': {error}")
             return None

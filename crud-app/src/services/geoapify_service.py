@@ -63,6 +63,7 @@ class GeoapifyService:
                 for place in places:
                     if place.get("wikipedia_url"):
                          enrich_tasks.append(self._enrich_image(client, place))
+                         enrich_tasks.append(self._fetch_wikipedia_summary(client, place))
                 
                 if enrich_tasks:
                      await asyncio.gather(*enrich_tasks)
@@ -136,6 +137,52 @@ class GeoapifyService:
         except Exception as e:
             logger.warning(f"Unsplash error for {place.get('name')}: {e}")
 
+    async def _fetch_wikipedia_summary(self, client: httpx.AsyncClient, place: Dict[str, Any]):
+        """Fetch Wikipedia summary/extract for a place."""
+        try:
+            wiki_url = place.get("wikipedia_url")
+            if not wiki_url:
+                return
+            
+            # Extract title from URL: https://en.wikipedia.org/wiki/Title_Name
+            parts = wiki_url.split("/wiki/")
+            if len(parts) != 2:
+                return
+            
+            title = parts[1].replace("_", " ")
+            domain = wiki_url.split("/")[2]  # e.g., "en.wikipedia.org"
+            lang = domain.split(".")[0]  # e.g., "en"
+            
+            # Use Wikipedia API to get extract (summary)
+            api_url = f"https://{lang}.wikipedia.org/w/api.php"
+            params = {
+                "action": "query",
+                "format": "json",
+                "prop": "extracts",
+                "exintro": True,  # Only intro section
+                "explaintext": True,  # Plain text, no HTML
+                "titles": title
+            }
+            
+            headers = {
+                "User-Agent": "TravelPlanner/1.0 (Educational Project; contact@example.com)"
+            }
+            
+            resp = await client.get(api_url, params=params, headers=headers)
+            if resp.status_code == 200:
+                data = resp.json()
+                pages = data.get("query", {}).get("pages", {})
+                for page_id, page_data in pages.items():
+                    extract = page_data.get("extract")
+                    if extract:
+                        # Limit to first 2-3 sentences for brevity
+                        sentences = extract.split(". ")
+                        summary = ". ".join(sentences[:2]) + "." if len(sentences) > 1 else extract
+                        place["description"] = summary
+                        return
+        except Exception as e:
+            logger.warning(f"Wikipedia summary error for {place.get('name')}: {e}")
+
     async def forward_geocoding(self, text: str) -> Optional[Dict[str, Any]]:
         """
         Get coordinates for a city or location name.
@@ -185,7 +232,7 @@ class GeoapifyService:
         return {
             "name": props.get("name", props.get("formatted", "Unknown")),
             "kind": props.get("categories", [])[0] if props.get("categories") else "attraction",
-            "description": props.get("details", []), 
+            "description": props.get("formatted") or f"A notable place in {props.get('city', 'the area')}", 
             "latitude": coordinates[1],
             "longitude": coordinates[0],
             "address": props.get("formatted"),

@@ -9,16 +9,43 @@ class UserBase(BaseModel):
 
 # Properties to receive via API on creation
 class UserCreate(UserBase):
-    pass
+    password: str
 
 # Properties to receive via API on update (all optional)
 class UserUpdate(BaseModel):
     name: Optional[str] = None
     email: Optional[EmailStr] = None
+    password: Optional[str] = None
 
 # Properties to return to client
 class UserResponse(UserBase):
     id: int
+    created_at: datetime
+    
+    class Config:
+        from_attributes = True
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+    user_id: int
+    user_name: str
+
+class TokenData(BaseModel):
+    email: Optional[str] = None
+
+class TripBase(BaseModel):
+    destination: str
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    itinerary: Any # JSON string or List/Dict
+
+class TripCreate(TripBase):
+    pass
+
+class TripResponse(TripBase):
+    id: int
+    user_id: int
     created_at: datetime
     
     class Config:
