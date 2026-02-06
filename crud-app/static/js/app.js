@@ -716,25 +716,84 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            listContainer.innerHTML = trips.map(trip => `
-                <div class="col-md-4">
-                    <div class="glass-card h-100 p-0 overflow-hidden trip-card-hover">
+            listContainer.innerHTML = trips.map(trip => {
+                // Parse itinerary to get preview image and stats
+                let itineraryData;
+                let previewImage = null;
+                let dayCount = 0;
+                let activityCount = 0;
+
+                try {
+                    itineraryData = typeof trip.itinerary === 'string' ? JSON.parse(trip.itinerary) : trip.itinerary;
+                    if (Array.isArray(itineraryData)) {
+                        dayCount = itineraryData.length;
+                        // Find first image from activities
+                        for (const day of itineraryData) {
+                            activityCount += (day.activities || []).length;
+                            if (!previewImage) {
+                                for (const act of (day.activities || [])) {
+                                    if (act.attraction?.image) {
+                                        previewImage = act.attraction.image;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error parsing itinerary:', e);
+                }
+
+                return `
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card h-100 p-0 overflow-hidden trip-card-hover" style="transition: all 0.3s ease;">
+                        ${previewImage ? `
+                        <div class="position-relative" style="height: 200px; overflow: hidden;">
+                            <img src="${previewImage}" class="w-100 h-100 object-fit-cover" alt="${trip.destination}" 
+                                 style="transition: transform 0.3s ease;"
+                                 onmouseover="this.style.transform='scale(1.1)'"
+                                 onmouseout="this.style.transform='scale(1)'">
+                            <div class="position-absolute top-0 start-0 end-0 bottom-0" 
+                                 style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));"></div>
+                            <div class="position-absolute bottom-0 start-0 p-3">
+                                <h4 class="fw-bold text-white mb-0">${trip.destination}</h4>
+                                <small class="text-white-50"><i class="fas fa-calendar-alt me-1"></i> ${new Date(trip.created_at).toLocaleDateString()}</small>
+                            </div>
+                        </div>
+                        ` : `
                         <div class="trip-card-header p-4 bg-gradient-primary">
                             <h4 class="fw-bold text-white mb-1">${trip.destination}</h4>
                             <small class="text-white-50"><i class="fas fa-calendar-alt me-1"></i> ${new Date(trip.created_at).toLocaleDateString()}</small>
                         </div>
+                        `}
                         <div class="p-4">
-                            <p class="text-white-50 mb-4">
-                                <i class="fas fa-route me-2"></i> Custom Itinerary
-                            </p>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="text-center flex-fill">
+                                    <div class="text-primary fw-bold h5 mb-0">${dayCount}</div>
+                                    <small class="text-white-50">Days</small>
+                                </div>
+                                <div class="text-center flex-fill border-start border-end border-secondary">
+                                    <div class="text-success fw-bold h5 mb-0">${activityCount}</div>
+                                    <small class="text-white-50">Activities</small>
+                                </div>
+                                <div class="text-center flex-fill">
+                                    <div class="text-warning fw-bold h5 mb-0"><i class="fas fa-star"></i></div>
+                                    <small class="text-white-50">Saved</small>
+                                </div>
+                            </div>
                             <div class="d-grid gap-2">
-                                <button class="btn btn-outline-light" onclick="viewTrip(${trip.id})"><i class="fas fa-eye me-2"></i> View Details</button>
-                                <button class="btn btn-sm btn-outline-danger border-0" onclick="deleteTrip(${trip.id})"><i class="fas fa-trash me-2"></i> Delete</button>
+                                <button class="btn btn-primary btn-glow" onclick="viewTrip(${trip.id})">
+                                    <i class="fas fa-eye me-2"></i> View Itinerary
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger border-0" onclick="deleteTrip(${trip.id})">
+                                    <i class="fas fa-trash me-2"></i> Delete Trip
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
 
         } catch (e) {
             console.error(e);
@@ -783,30 +842,56 @@ document.addEventListener('DOMContentLoaded', () => {
             let html = `
                 <div class="text-center mb-4">
                     <h3 class="text-white mb-3">Trip to ${trip.destination}</h3>
-                    <div class="d-flex justify-content-center gap-3">
-                        <button onclick="initMap(window.tempTripItinerary)" class="btn btn-outline-info btn-glow"><i class="fas fa-map-marked-alt me-2"></i>View Route Map</button>
-                    </div>
                 </div>
             `;
 
             if (Array.isArray(itineraryData)) {
                 itineraryData.forEach((dayPlan, index) => {
                     html += `
-                        <div class="itinerary-day mb-4 p-3 rounded" style="background: rgba(255,255,255,0.05);">
-                            <h5 class="text-warning border-bottom border-secondary pb-2 mb-3">Day ${dayPlan.day || index + 1}</h5>
-                            <ul class="list-unstyled text-white">
-                                ${(dayPlan.activities || []).map(act => {
-                        // handle both simple string activities and object activities from different planner versions
-                        if (typeof act === 'string') return `<li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>${act}</li>`;
-                        // Complex object
-                        const time = act.time ? `<span class="badge bg-secondary me-2">${act.time}</span>` : '';
-                        const name = act.attraction?.name || act.description || 'Activity';
-                        return `<li class="mb-3">
-                                        ${time} <strong>${name}</strong>
-                                        ${act.notes ? `<br><small class="text-white-50 ms-3">${act.notes}</small>` : ''}
-                                    </li>`;
+                        <div class="itinerary-day mb-5">
+                            <h4 class="text-secondary border-bottom border-secondary pb-2 mb-3">Day ${index + 1} <span class="text-muted fs-6 ms-2">${dayPlan.summary || ''}</span></h4>
+                            <div class="timeline">
+                                ${(dayPlan.activities || []).map((act, actIndex) => {
+                        const attr = act.attraction;
+                        const hasImage = attr && attr.image;
+
+                        // Create a safe ID for this activity
+                        const actId = `saved_act_${tripId}_${index}_${actIndex}`;
+
+                        // Store activity data for modal access
+                        if (!window.activityData) window.activityData = {};
+                        window.activityData[actId] = act;
+
+                        return `
+                                    <div class="card mb-3 border-0 bg-transparent activity-card" 
+                                         style="cursor: pointer; transition: all 0.3s ease;"
+                                         onmouseover="this.style.transform='translateX(8px)'; this.style.backgroundColor='rgba(255,255,255,0.05)';"
+                                         onmouseout="this.style.transform='translateX(0)'; this.style.backgroundColor='transparent';"
+                                         onclick="showActivityDetails(window.activityData['${actId}'])">
+                                        <div class="row g-0">
+                                            <div class="col-md-2 text-center pt-2">
+                                                <span class="badge bg-primary rounded-pill px-3 py-2">${act.time || ''}</span>
+                                            </div>
+                                            <div class="col-md-${hasImage ? '8' : '10'}">
+                                                <div class="card-body py-2">
+                                                    <h5 class="card-title fw-bold text-white mb-1">
+                                                        ${attr ? attr.name : (act.description || 'Activity')}
+                                                        <i class="fas fa-chevron-right ms-2 small text-white-50"></i>
+                                                    </h5>
+                                                    <p class="card-text text-white-50 small mb-2">${attr && attr.description ? (attr.description.length > 100 ? attr.description.substring(0, 100) + '...' : attr.description) : (act.notes || '')}</p>
+                                                    <small class="text-info"><i class="fas fa-info-circle me-1"></i>Click for details</small>
+                                                </div>
+                                            </div>
+                                            ${hasImage ? `
+                                            <div class="col-md-2">
+                                                <img src="${attr.image}" class="img-fluid rounded-3 h-100 object-fit-cover" alt="${attr.name}" onerror="this.style.display='none'">
+                                            </div>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                    `;
                     }).join('')}
-                            </ul>
+                            </div>
                         </div>
                     `;
                 });
