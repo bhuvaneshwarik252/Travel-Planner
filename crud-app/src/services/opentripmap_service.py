@@ -56,8 +56,8 @@ class OpenTripMapService:
                 logger.info(f"OpenTripMap: Found {len(raw_places)} raw results for lat={lat}, lon={lon}")
 
                 if not raw_places or not isinstance(raw_places, list):
-                    # Try a larger radius as fallback if 0 results
-                    if radius < 50000:
+                    # Try a larger radius as fallback if 0 results (Only if current radius is small)
+                    if radius < 30000:
                         logger.info(f"No results found within {radius}m, trying 30km radius...")
                         return await self.get_attractions(lat, lon, radius=30000, limit=limit, kinds=kinds)
                     return []

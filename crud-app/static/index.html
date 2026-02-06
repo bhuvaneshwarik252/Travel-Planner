@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner | Discover Your Next Adventure</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-paper-plane me-2"></i>TravelPlanner</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#flights">Flights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#planner">Trip Planner</a></li>
+
+                    <!-- Auth Links -->
+                    <li class="nav-item" id="nav-login">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    </li>
+                    <li class="nav-item" id="nav-register">
+                        <a class="nav-link btn btn-sm btn-outline-light ms-2" href="#" data-bs-toggle="modal"
+                            data-bs-target="#registerModal">Register</a>
+                    </li>
+                    <li class="nav-item dropdown d-none" id="nav-user">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle me-1"></i> <span id="user-name-display">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logout-btn">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center text-center text-white">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">Explore the World with Ease</h1>
+            <p class="lead mb-5">Plan your perfect trip with our intelligent travel assistant. Flights, itineraries, and
+                adventures await.</p>
+            <a href="#flights" class="btn btn-lg btn-primary btn-glow">Start Your Journey</a>
+        </div>
+    </section>
+
+    <!-- Flight Search Section -->
+    <section id="flights" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold text-gradient">Search Flights</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="glass-card p-4">
+                        <form id="flight-search-form" class="row g-3">
+                            <div class="col-md-3">
+                                <label for="origin" class="form-label">Origin</label>
+                                <input type="text" class="form-control" id="origin"
+                                    placeholder="City or Airport (e.g. LON)" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="destination" class="form-label">Destination</label>
+                                <input type="text" class="form-control" id="destination"
+                                    placeholder="City or Airport (e.g. NYC)" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="date" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="date" required>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100 btn-glow">Search Flights</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="flight-results" class="row mt-5 g-4">
+                <!-- Flight results will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Planner Section -->
+    <section id="planner" class="py-5 bg-light-gradient">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold text-gradient">Smart Trip Planner</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="glass-card p-4">
+                        <form id="trip-planner-form">
+                            <div class="mb-3">
+                                <label for="plan-destination" class="form-label">Destinations</label>
+                                <input type="text" class="form-control" id="plan-destination"
+                                    placeholder="e.g. Paris, London, Amsterdam" required>
+                                <div class="form-text text-white-50">Enter multiple cities separated by commas.</div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="plan-origin" class="form-label">Starting Point (Optional)</label>
+                                    <input type="text" class="form-control" id="plan-origin" placeholder="e.g. Berlin">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="plan-days" class="form-label">Total Days</label>
+                                    <input type="number" class="form-control" id="plan-days" placeholder="e.g. 7"
+                                        required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 mt-4 btn-glow">Generate
+                                Itinerary</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="itinerary-results" class="mt-5">
+                <!-- Itinerary results will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Auth Modals -->
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title fw-bold">Login</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 btn-glow">Login</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <small>Don't have an account? <a href="#" class="text-warning" data-bs-toggle="modal"
+                                data-bs-target="#registerModal">Register</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title fw-bold">Register</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="mb-3">
+                            <label for="register-name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="register-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="register-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="register-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 btn-glow">Register</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <small>Already have an account? <a href="#" class="text-warning" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">Login</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="text-center text-white py-4 glass-footer">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Travel Planner API. Built with FastAPI & Bootstrap.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <!-- Custom JS -->
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>

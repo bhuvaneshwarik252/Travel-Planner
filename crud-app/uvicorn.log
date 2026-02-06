@@ -1,0 +1,638 @@
+nohup: ignoring input
+INFO:     Will watch for changes in these directories: ['/home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [46330] using StatReload
+INFO:     Started server process [46333]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:     127.0.0.1:35890 - "GET /docs HTTP/1.1" 200 OK
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/fastapi/openapi/utils.py:254: UserWarning: Duplicate Operation ID get_geoapify_places_api_travel_geoapify_places_get for function get_geoapify_places at /home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/travel.py
+  warnings.warn(message, stacklevel=1)
+INFO:     127.0.0.1:35890 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=London&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.opentripmap.com/0.1/en/places/radius?apikey=5ae2e3f221c38a28845f05b65fd956f4e46d1df283e7c1e4d780d96a&radius=5000&lon=-0.1277653&lat=51.5074456&kinds=amusements%2Cinteresting_places%2Ctourist_facilities&limit=2&format=json "HTTP/1.1 200 OK"
+INFO:src.services.opentripmap_service:OpenTripMap: Found 0 raw results for lat=51.5074456, lon=-0.1277653
+INFO:src.services.opentripmap_service:No results found within 5000m, trying 30km radius...
+INFO:httpx:HTTP Request: GET https://api.opentripmap.com/0.1/en/places/radius?apikey=5ae2e3f221c38a28845f05b65fd956f4e46d1df283e7c1e4d780d96a&radius=30000&lon=-0.1277653&lat=51.5074456&kinds=amusements%2Cinteresting_places%2Ctourist_facilities&limit=2&format=json "HTTP/1.1 200 OK"
+INFO:src.services.opentripmap_service:OpenTripMap: Found 0 raw results for lat=51.5074456, lon=-0.1277653
+INFO:     127.0.0.1:59390 - "GET /api/travel/geoapify/places?city=London&limit=2 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/routers/travel.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46333]
+INFO:     Started server process [46613]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:     127.0.0.1:55278 - "GET /docs HTTP/1.1" 200 OK
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/fastapi/openapi/utils.py:254: UserWarning: Duplicate Operation ID get_geoapify_places_api_travel_geoapify_places_get for function get_geoapify_places at /home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/travel.py
+  warnings.warn(message, stacklevel=1)
+INFO:     127.0.0.1:55278 - "GET /openapi.json HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/geoapify_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46613]
+INFO:     Started server process [46647]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/services/geoapify_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46647]
+INFO:     Started server process [46658]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=bengaluru&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A77.590082%2C12.9767936%2C5000&limit=1&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Tipu_Sultan%27s_Summer_Palace "HTTP/1.1 403 Forbidden"
+INFO:     127.0.0.1:58818 - "GET /api/travel/geoapify/places?city=bengaluru&categories=tourism.sights&radius=5000&limit=1 HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=Bangalore&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A77.590082%2C12.9767936%2C5000&limit=1&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Tipu_Sultan%27s_Summer_Palace "HTTP/1.1 403 Forbidden"
+INFO:     127.0.0.1:52284 - "GET /api/travel/geoapify/places?city=Bangalore&limit=1 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/geoapify_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46658]
+INFO:     Started server process [46784]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=Bangalore&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A77.590082%2C12.9767936%2C5000&limit=1&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Tipu_Sultan%27s_Summer_Palace "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:34712 - "GET /api/travel/geoapify/places?city=Bangalore&limit=1 HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=bengaluru&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A77.590082%2C12.9767936%2C5000&limit=1&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Tipu_Sultan%27s_Summer_Palace "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:48492 - "GET /api/travel/geoapify/places?city=bengaluru&categories=tourism.sights&radius=5000&limit=1 HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=bengaluru&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A77.590082%2C12.9767936%2C5000&limit=5&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Bangalore_Fort "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Bangalore_Palace "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Tipu_Sultan%27s_Summer_Palace "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Mayo_Hall_%28Bangalore%29 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Statue_of_Queen_Victoria%2C_Bangalore "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:53280 - "GET /api/travel/geoapify/places?city=bengaluru&categories=tourism.sights&radius=5000&limit=5 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'config/settings.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46784]
+INFO:     Started server process [48207]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/services/geoapify_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48207]
+INFO:     Started server process [48253]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:     127.0.0.1:36202 - "GET /docs HTTP/1.1" 200 OK
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/fastapi/openapi/utils.py:254: UserWarning: Duplicate Operation ID get_geoapify_places_api_travel_geoapify_places_get for function get_geoapify_places at /home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/travel.py
+  warnings.warn(message, stacklevel=1)
+INFO:     127.0.0.1:36202 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=Bangalore&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A77.590082%2C12.9767936%2C5000&limit=3&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Bangalore_Palace "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Bangalore_Fort "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Tipu_Sultan%27s_Summer_Palace "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=Bangalore+Palace&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:60846 - "GET /api/travel/geoapify/places?city=Bangalore&limit=3 HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=benagluru&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:51082 - "GET /api/travel/geoapify/places?city=benagluru&categories=tourism.sights&radius=5000&limit=1 HTTP/1.1" 404 Not Found
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=bengaluru&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A77.590082%2C12.9767936%2C5000&limit=5&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Statue_of_Queen_Victoria%2C_Bangalore "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Bangalore_Palace "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Tipu_Sultan%27s_Summer_Palace "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Mayo_Hall_%28Bangalore%29 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Bangalore_Fort "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=Bangalore+Palace&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=Queen+Victoria&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=Mayo+Hall&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:48298 - "GET /api/travel/geoapify/places?city=bengaluru&categories=tourism.sights&radius=5000&limit=5 HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=Bangalore&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A77.590082%2C12.9767936%2C5000&limit=3&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Bangalore_Fort "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Bangalore_Palace "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Tipu_Sultan%27s_Summer_Palace "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=Bangalore+Palace&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:56436 - "GET /api/travel/geoapify/places?city=Bangalore&limit=3 HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=0&lat=0&apikey=5ae2e3f221c38a28845f05b65fd956f4e46d1df283e7c1e4d780d96a "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=1 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:43730 - "GET /health/apis HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/schemas.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48253]
+INFO:     Started server process [48603]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:     127.0.0.1:52240 - "GET /docs HTTP/1.1" 200 OK
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/fastapi/openapi/utils.py:254: UserWarning: Duplicate Operation ID get_geoapify_places_api_travel_geoapify_places_get for function get_geoapify_places at /home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/travel.py
+  warnings.warn(message, stacklevel=1)
+INFO:     127.0.0.1:52240 - "GET /openapi.json HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/routers/planner.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48603]
+INFO:     Started server process [48620]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/routers/planner.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48620]
+INFO:     Started server process [48621]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:     127.0.0.1:47708 - "GET /docs HTTP/1.1" 200 OK
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/fastapi/openapi/utils.py:254: UserWarning: Duplicate Operation ID get_geoapify_places_api_travel_geoapify_places_get for function get_geoapify_places at /home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/travel.py
+  warnings.warn(message, stacklevel=1)
+INFO:     127.0.0.1:47708 - "GET /openapi.json HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48621]
+INFO:     Started server process [48637]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48637]
+INFO:     Started server process [48678]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:src.services.orchestrator:Orchestrating travel plan for: Paris
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=Paris&limit=1&sort=-population&types=CITY "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities/144571/nearbyCities?radius=100&limit=5&sort=-population&types=CITY "HTTP/1.1 429 Too Many Requests"
+ERROR:src.services.geodb_service:GeoDB API Error: {"message":"You have exceeded the rate limit per second for your plan, BASIC, by the API provider"}
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities/144571/nearbyCities?radius=100&limit=5&sort=-population&types=CITY "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.opentripmap.com/0.1/en/places/radius?apikey=5ae2e3f221c38a28845f05b65fd956f4e46d1df283e7c1e4d780d96a&radius=15000&lon=2.352222222&lat=48.856666666&kinds=amusements%2Cinteresting_places%2Ctourist_facilities&limit=5&format=json "HTTP/1.1 200 OK"
+INFO:src.services.opentripmap_service:OpenTripMap: Found 0 raw results for lat=48.856666666, lon=2.352222222
+INFO:src.services.opentripmap_service:No results found within 15000m, trying 30km radius...
+INFO:httpx:HTTP Request: GET https://api.opentripmap.com/0.1/en/places/radius?apikey=5ae2e3f221c38a28845f05b65fd956f4e46d1df283e7c1e4d780d96a&radius=30000&lon=2.352222222&lat=48.856666666&kinds=amusements%2Cinteresting_places%2Ctourist_facilities&limit=5&format=json "HTTP/1.1 200 OK"
+INFO:src.services.opentripmap_service:OpenTripMap: Found 0 raw results for lat=48.856666666, lon=2.352222222
+INFO:     127.0.0.1:41114 - "GET /api/plan?destination=Paris&days=3&travel_mode=flight HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48678]
+INFO:     Started server process [48786]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:src.services.orchestrator:Orchestrating travel plan for: Paris
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=Paris&limit=1&sort=-population&types=CITY "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities/144571/nearbyCities?radius=100&limit=5&sort=-population&types=CITY "HTTP/1.1 429 Too Many Requests"
+ERROR:src.services.geodb_service:GeoDB API Error: {"message":"You have exceeded the rate limit per second for your plan, BASIC, by the API provider"}
+ERROR:src.services.geoapify_service:Geoapify Places API Error: 
+INFO:     127.0.0.1:37184 - "GET /api/plan?destination=Paris&days=3 HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A2.352%2C48.856%2C5000&limit=5&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://fr.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Mus%C3%A9e_de_la_Lib%C3%A9ration_de_Paris_%E2%80%93_mus%C3%A9e_du_g%C3%A9n%C3%A9ral-Leclerc_%E2%80%93_mus%C3%A9e_Jean-Moulin "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://fr.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Crypte_arch%C3%A9ologique_du_parvis_Notre-Dame "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://fr.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Au_Lapin_Agile "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://fr.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Cath%C3%A9drale_Notre-Dame_de_Paris "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=Mus%C3%A9e+de+la+Lib%C3%A9ration+de+Paris&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=Crypte+Arch%C3%A9ologique+du+Parvis+Notre-Dame&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:32996 - "GET /api/travel/geoapify/places?lat=48.856&lon=2.352&limit=5 HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle%3A2.352%2C48.856%2C5000&limit=3&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://fr.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Mus%C3%A9e_de_la_Lib%C3%A9ration_de_Paris_%E2%80%93_mus%C3%A9e_du_g%C3%A9n%C3%A9ral-Leclerc_%E2%80%93_mus%C3%A9e_Jean-Moulin "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://fr.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Crypte_arch%C3%A9ologique_du_parvis_Notre-Dame "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=Mus%C3%A9e+de+la+Lib%C3%A9ration+de+Paris&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=Crypte+Arch%C3%A9ologique+du+Parvis+Notre-Dame&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:44850 - "GET /api/travel/geoapify/places?lat=48.856&lon=2.352&limit=3 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48786]
+INFO:     Started server process [49018]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:src.services.orchestrator:Orchestrating travel plan for: Paris
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=Paris&limit=1&sort=-population&types=CITY "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities/144571/nearbyCities?radius=100&limit=5&sort=-population&types=CITY "HTTP/1.1 429 Too Many Requests"
+ERROR:src.services.geodb_service:GeoDB API Error: {"message":"You have exceeded the rate limit per second for your plan, BASIC, by the API provider"}
+INFO:src.services.orchestrator:Fetching attractions for lat=48.856666666, lon=2.352222222
+ERROR:src.services.geoapify_service:Geoapify Places API Error: 
+INFO:src.services.orchestrator:Geoapify returned 0 places
+INFO:     127.0.0.1:34446 - "GET /api/plan?destination=Paris&days=2 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/geoapify_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49018]
+INFO:     Started server process [49144]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:src.services.orchestrator:Orchestrating travel plan for: Bangalore
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=Bangalore&limit=1&sort=-population&types=CITY "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities/Bangalore "HTTP/1.1 429 Too Many Requests"
+ERROR:src.services.geodb_service:GeoDB API Error: {"message":"You have exceeded the rate limit per second for your plan, BASIC, by the API provider"}
+INFO:     127.0.0.1:52304 - "GET /api/plan?destination=Bangalore&days=2 HTTP/1.1" 404 Not Found
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49144]
+INFO:     Started server process [49353]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:src.services.orchestrator:Orchestrating travel plan for: Paris
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=Paris&limit=1&sort=-population&types=CITY "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://wft-geo-db.p.rapidapi.com/v1/geo/cities/144571/nearbyCities?radius=100&limit=5&sort=-population&types=CITY "HTTP/1.1 429 Too Many Requests"
+ERROR:src.services.geodb_service:GeoDB API Error: {"message":"You have exceeded the rate limit per second for your plan, BASIC, by the API provider"}
+INFO:src.services.orchestrator:Fetching attractions for lat=48.856666666, lon=2.352222222
+ERROR:src.services.geoapify_service:Geoapify Places API Error: 
+Traceback (most recent call last):
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpcore/_async/connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpcore/_async/http11.py", line 136, in handle_async_request
+    raise exc
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpcore/_async/http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpcore/_async/http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpcore/_async/http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.READ_NUM_BYTES, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpcore/_backends/anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/services/geoapify_service.py", line 46, in get_places
+    response = await client.get(url, params=params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_client.py", line 1768, in get
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout
+INFO:src.services.orchestrator:Geoapify returned 0 places
+INFO:     127.0.0.1:49466 - "GET /api/plan?destination=Paris&days=2 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49353]
+INFO:     Started server process [56647]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [56647]
+INFO:     Started server process [56653]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:src.services.orchestrator:Orchestrating travel plan for: Bangalore
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=Bangalore&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Fetching attractions for lat=12.9767936, lon=77.590082
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights%2Centertainment&filter=circle%3A77.590082%2C12.9767936%2C10000&limit=15&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Jehangir_H._Kothari "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Visvesvaraya_Industrial_and_Technological_Museum "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=National_Gallery_of_Modern_Art%2C_Bangalore "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=National+Gallery+of+Modern+Art&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Geoapify returned 15 places
+ERROR:src.services.orchestrator:Error fetching attractions in orchestrator: 1 validation error for Attraction
+description
+  Input should be a valid string [type=string_type, input_value=['details', 'details.cont...details.wiki_and_media'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/services/orchestrator.py", line 64, in generate_travel_plan
+    attractions_list.append(schemas.Attraction(
+                            ~~~~~~~~~~~~~~~~~~^
+        name=place.get("name"),
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        ) if place.get("latitude") and place.get("longitude") else None
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ))
+    ^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Attraction
+description
+  Input should be a valid string [type=string_type, input_value=['details', 'details.cont...details.wiki_and_media'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+INFO:     127.0.0.1:58588 - "GET /api/plan?destination=Bangalore&days=3 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [56653]
+INFO:     Started server process [56812]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:src.services.orchestrator:Orchestrating travel plan for: Bangalore
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=Bangalore&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Fetching attractions for lat=12.9767936, lon=77.590082
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights%2Centertainment&filter=circle%3A77.590082%2C12.9767936%2C10000&limit=15&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=National_Gallery_of_Modern_Art%2C_Bangalore "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Visvesvaraya_Industrial_and_Technological_Museum "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Jehangir_H._Kothari "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=National+Gallery+of+Modern+Art&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Geoapify returned 15 places
+INFO:     127.0.0.1:55788 - "GET /api/plan?destination=Bangalore&days=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47308 - "GET /docs HTTP/1.1" 200 OK
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/fastapi/openapi/utils.py:254: UserWarning: Duplicate Operation ID get_geoapify_places_api_travel_geoapify_places_get for function get_geoapify_places at /home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/travel.py
+  warnings.warn(message, stacklevel=1)
+INFO:     127.0.0.1:47308 - "GET /openapi.json HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [56812]
+INFO:     Started server process [57002]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:     127.0.0.1:39154 - "GET /docs HTTP/1.1" 200 OK
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/fastapi/openapi/utils.py:254: UserWarning: Duplicate Operation ID get_geoapify_places_api_travel_geoapify_places_get for function get_geoapify_places at /home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/travel.py
+  warnings.warn(message, stacklevel=1)
+INFO:     127.0.0.1:39154 - "GET /openapi.json HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57002]
+INFO:     Started server process [57105]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:src.services.orchestrator:Orchestrating travel plan for: Bangalore
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=Bangalore&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Fetching attractions for lat=12.9767936, lon=77.590082
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights%2Centertainment&filter=circle%3A77.590082%2C12.9767936%2C10000&limit=15&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Visvesvaraya_Industrial_and_Technological_Museum "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=National_Gallery_of_Modern_Art%2C_Bangalore "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Jehangir_H._Kothari "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=National+Gallery+of+Modern+Art&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Geoapify returned 15 places
+ERROR:src.services.travel_service:Error resolving location for 'Bangalore': [429]
+
+INFO:     127.0.0.1:39042 - "GET /api/plan?destination=Bangalore&days=3&origin=Mumbai&date=2026-03-15 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/geoapify_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57105]
+INFO:     Started server process [57344]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57344]
+Process SpawnProcess-23:
+Traceback (most recent call last):
+  File "/home/vk-linux/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/vk-linux/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/vk-linux/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/vk-linux/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/main.py", line 9, in <module>
+    from src.routers import users, travel, health, planner
+  File "/home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/planner.py", line 3, in <module>
+    from src.services.orchestrator import orchestrator_service
+  File "/home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/services/orchestrator.py", line 252
+    transit_info = await self._get_transit_suggestion(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: 'await' outside async function
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Started server process [57367]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57367]
+INFO:     Started server process [57374]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:     127.0.0.1:44908 - "GET /docs HTTP/1.1" 200 OK
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/fastapi/openapi/utils.py:254: UserWarning: Duplicate Operation ID get_geoapify_places_api_travel_geoapify_places_get for function get_geoapify_places at /home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/travel.py
+  warnings.warn(message, stacklevel=1)
+INFO:     127.0.0.1:44908 - "GET /openapi.json HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57374]
+INFO:     Started server process [57381]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:     127.0.0.1:54670 - "GET /docs HTTP/1.1" 200 OK
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/fastapi/openapi/utils.py:254: UserWarning: Duplicate Operation ID get_geoapify_places_api_travel_geoapify_places_get for function get_geoapify_places at /home/vk-linux/Desktop/bhuvi-project/Travel-Planner/crud-app/src/routers/travel.py
+  warnings.warn(message, stacklevel=1)
+INFO:     127.0.0.1:54670 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:src.services.orchestrator:Orchestrating travel plan for: Bangalore
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=Bangalore&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Fetching attractions for lat=12.9767936, lon=77.590082
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights%2Centertainment&filter=circle%3A77.590082%2C12.9767936%2C10000&limit=15&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=National_Gallery_of_Modern_Art%2C_Bangalore "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Jehangir_H._Kothari "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Visvesvaraya_Industrial_and_Technological_Museum "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=National+Gallery+of+Modern+Art&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Geoapify returned 15 places
+INFO:     127.0.0.1:38350 - "GET /api/plan?destination=Bangalore&days=2&origin=Mumbai HTTP/1.1" 404 Not Found
+/home/vk-linux/miniconda3/lib/python3.13/site-packages/starlette/_exception_handler.py:63: RuntimeWarning: coroutine 'OrchestratorService._generate_itinerary' was never awaited
+  await response(scope, receive, sender)
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57381]
+INFO:     Started server process [57498]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+INFO:src.services.orchestrator:Orchestrating travel plan for: Bangalore
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v1/geocode/search?text=Bangalore&apiKey=cd757b50e3154460ab7c972693e9e02c&limit=1 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Fetching attractions for lat=12.9767936, lon=77.590082
+INFO:httpx:HTTP Request: GET https://api.geoapify.com/v2/places?categories=tourism.sights%2Centertainment&filter=circle%3A77.590082%2C12.9767936%2C10000&limit=15&apiKey=cd757b50e3154460ab7c972693e9e02c "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Visvesvaraya_Industrial_and_Technological_Museum "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=National_Gallery_of_Modern_Art%2C_Bangalore "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Jehangir_H._Kothari "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.unsplash.com/search/photos?query=National+Gallery+of+Modern+Art&per_page=1&client_id=_2sHRAEEo-KQXsJIhLkqFl61RgQffiuF81k9BkY_Ki8 "HTTP/1.1 200 OK"
+INFO:src.services.orchestrator:Geoapify returned 15 places
+INFO:     127.0.0.1:40804 - "GET /api/plan?destination=Bangalore&days=2&origin=Mumbai HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57498]
+INFO:     Started server process [59019]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/services/orchestrator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:src.main:Shutting down application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [59019]
+INFO:     Started server process [59291]
+INFO:     Waiting for application startup.
+INFO:src.main:Starting up application...
+INFO:     Application startup complete.
